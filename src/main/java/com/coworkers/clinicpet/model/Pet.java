@@ -1,0 +1,1 @@
+package com.coworkers.clinicpet.model;import lombok.AllArgsConstructor;import lombok.Getter;import lombok.Setter;@Getter@Setter@AllArgsConstructorpublic class Pet {    private String id;    private String animalType;    private int age;}
