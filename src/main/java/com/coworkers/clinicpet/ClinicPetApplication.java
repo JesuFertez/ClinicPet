@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ClinicPetApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ClinicPetApplication.class, args);
 	}
 
