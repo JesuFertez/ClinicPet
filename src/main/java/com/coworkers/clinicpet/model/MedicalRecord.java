@@ -5,26 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
-public class MedicalRecord {
+public class MedicalRecord { //Ficha medica
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     private List <String> vaccines;
     private int weigth;
     private State state;
-    private String observations;
-    private String notes;
-    @OneToOne
-    @JoinColumn(name= "pet_id")
+
+    @OneToOne(mappedBy = "medicalRecord")
     private Pet patient;
-
-    @OneToMany(mappedBy = "medicalRecord")
-    private List<MedicalHistory> medicalHistories;
-
 }

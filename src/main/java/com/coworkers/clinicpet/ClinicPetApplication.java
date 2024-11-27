@@ -14,13 +14,13 @@ public class ClinicPetApplication {
         SpringApplication.run(ClinicPetApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner run(Environment environment) {
-        return args -> {
-            String port = environment.getProperty("server.port","");
-            System.out.println("La API está corriendo en el puerto: " +port);
-            System.out.println("Listo ");
-        };
-
-    }
+//    @Bean
+//    public CommandLineRunner run(Environment environment) {
+//        return args -> {
+//            String port = environment.getProperty("server.port","");
+//            System.out.println("La API está corriendo en el puerto: " +port);
+//            System.out.println("Listo ");
+//        };
+//
+//    }
 }
