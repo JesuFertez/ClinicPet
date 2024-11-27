@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignorar archivos .DS_Store (archivos de macOS)
+.DS_Store
+
+# Ignorar el directorio boostrap
+src/main/java/com/coworkers/clinicpet/boostrap/
