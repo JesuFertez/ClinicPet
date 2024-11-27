@@ -1,4 +1,6 @@
 package com.coworkers.clinicpet.model;
 
-public class TypeOfAppoinments {
+public enum TypeOfAppoinments {
+    EMERGENCY,
+    CONTROL,
 }

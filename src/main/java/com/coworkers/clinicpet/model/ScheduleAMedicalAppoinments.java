@@ -11,17 +11,20 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @Entity
-public class MedicalAppoinments {
+public class ScheduleAMedicalAppoinments { //Agendar cita
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    // private Time hour;
     private TypeOfAppoinments typeOfAppoinment;
     @ManyToOne
-    @JoinColumn(name = "pet_id")
+    @JoinColumn(name = "pet_id", referencedColumnName = "id")
     private Pet patient;
     @ManyToOne
-    @JoinColumn(name = "doctor_id")
+    @JoinColumn(name = "doctor_id",referencedColumnName = "id")
     private Doctor doctor;
+
+    @OneToOne
+    @JoinColumn(name = "medicalAtention_id", referencedColumnName = "id")
+    private MedicalAttention medicalAttention;
 }

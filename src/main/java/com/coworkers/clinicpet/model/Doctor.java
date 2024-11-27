@@ -11,15 +11,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Entity
+@Table(name = "doctor")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String name;
     private String lastName;
     private String specialty;
 
     @OneToMany(mappedBy = "doctor")
-    private List<MedicalAppoinments> appoinments;
+    private List<ScheduleAMedicalAppoinments> appoinments;
 
 }
