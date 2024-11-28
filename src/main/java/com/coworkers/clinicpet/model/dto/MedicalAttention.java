@@ -1,4 +1,4 @@
-package com.coworkers.clinicpet.model;
+package com.coworkers.clinicpet.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

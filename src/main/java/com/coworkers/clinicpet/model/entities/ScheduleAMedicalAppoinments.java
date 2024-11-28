@@ -3,11 +3,13 @@ package com.coworkers.clinicpet.model.entities;
 import com.coworkers.clinicpet.model.TypeOfAppoinments;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
