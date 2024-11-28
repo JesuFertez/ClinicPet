@@ -2,11 +2,13 @@ package com.coworkers.clinicpet.model.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,8 +22,6 @@ public class Doctor {
     private String name;
     private String lastName;
     private String specialty;
-
     @OneToMany(mappedBy = "doctor")
     private List<ScheduleAMedicalAppoinments> appoinments;
-
 }

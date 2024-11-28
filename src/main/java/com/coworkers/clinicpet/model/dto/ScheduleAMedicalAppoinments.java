@@ -1,5 +1,6 @@
-package com.coworkers.clinicpet.model;
+package com.coworkers.clinicpet.model.dto;
 
+import com.coworkers.clinicpet.model.TypeOfAppoinments;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
