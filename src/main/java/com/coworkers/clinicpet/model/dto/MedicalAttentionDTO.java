@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import java.util.List;
-
+@Getter
 @Setter
 @AllArgsConstructor
-@Getter
-public class MedicalHistory {
+public class MedicalAttentionDTO {//Atenciones medicas, detalle consultas
     private Long id;
-    private List<ScheduleAMedicalAppoinments> scheduleAMedicalAppoinments;
+    private String observations;
+    private String notes;
+    private String treatments;
 }

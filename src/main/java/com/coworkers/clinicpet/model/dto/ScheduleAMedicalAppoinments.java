@@ -14,7 +14,7 @@ public class ScheduleAMedicalAppoinments { //Agendar cita
     private Long id;
     private LocalDate date;
     private TypeOfAppoinments typeOfAppoinment;
-    private Pet patient;
-    private Doctor doctor;
-    private MedicalAttention medicalAttention;
+    private PetDTO patient;
+    private DoctorDTO doctorDTO;
+    private MedicalAttentionDTO medicalAttentionDTO;
 }
