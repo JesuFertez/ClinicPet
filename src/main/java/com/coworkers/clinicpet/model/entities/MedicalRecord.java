@@ -2,16 +2,12 @@ package com.coworkers.clinicpet.model.entities;
 
 import com.coworkers.clinicpet.model.State;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class MedicalRecord { //Ficha medica
@@ -19,7 +15,10 @@ public class MedicalRecord { //Ficha medica
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    private List <String> vaccines;
+    @ElementCollection //para que guarde un listado de vacunas en una tabla aparte
+    @CollectionTable(name = "pet_vaccines", joinColumns=@JoinColumn(name="pet_id"))
+    @Column(name = "vaccines")
+    private List<String> vaccines;
     private int weigth;
     private State state;
 

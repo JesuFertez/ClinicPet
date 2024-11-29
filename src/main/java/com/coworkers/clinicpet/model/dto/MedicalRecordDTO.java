@@ -11,10 +11,10 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class MedicalRecord { //Ficha medica
+public class MedicalRecordDTO { //Ficha medica
     private Long id;
     private List <String> vaccines;
     private int weigth;
     private State state;
-    private Pet patient;
+    private PetDTO patient;
 }
