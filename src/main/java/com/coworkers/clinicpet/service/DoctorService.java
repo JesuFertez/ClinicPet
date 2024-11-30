@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class DoctorService {
+
+    @Autowired
     private DoctorRepository doctorRepository;
     @Autowired
     private ModelMapper modelMapper;
@@ -40,7 +42,7 @@ public class DoctorService {
 
     public DoctorDTO updateDoctor(DoctorDTO doctorDTO, Long id) {
         Doctor doctorExisting = doctorRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Doctor not found"+id));
+                .orElseThrow(() -> new NotFoundException("Doctor not found with id:"+id));
 
         doctorExisting.setName(doctorDTO.getName());
         doctorExisting.setLastName(doctorDTO.getLastName());
@@ -51,7 +53,7 @@ public class DoctorService {
 
     public void deleteDoctor(Long id) {
         Doctor doctor = doctorRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Doctor not found"+id));
+                .orElseThrow(() -> new NotFoundException("Doctor not found with id: "+id));
         doctorRepository.delete(doctor);
     }
 }
