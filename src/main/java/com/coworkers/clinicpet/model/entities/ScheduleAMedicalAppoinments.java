@@ -1,6 +1,7 @@
 package com.coworkers.clinicpet.model.entities;
 
 import com.coworkers.clinicpet.model.TypeOfAppoinments;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,13 +15,21 @@ public class ScheduleAMedicalAppoinments { //Agendar cita
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private LocalDate date;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TypeOfAppoinments typeOfAppoinment;
+
+
     @ManyToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id")
     private Pet patient;
     @ManyToOne
-    @JoinColumn(name = "doctor_id",referencedColumnName = "id")
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
     private Doctor doctor;
 
     @OneToOne
