@@ -12,5 +12,5 @@ import java.util.List;
 @Getter
 public class MedicalHistoryDTO {
     private Long id;
-    private List<ScheduleAMedicalAppoinments> scheduleAMedicalAppoinments;
+    private List<ScheduleAMedicalAppoinmentsDTO> scheduleAMedicalAppoinments;
 }

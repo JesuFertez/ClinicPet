@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ScheduleAMedicalAppoinments { //Agendar cita
+public class ScheduleAMedicalAppoinmentsDTO { //Agendar cita
     private Long id;
     private LocalDate date;
     private TypeOfAppoinments typeOfAppoinment;
