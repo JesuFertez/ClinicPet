@@ -21,7 +21,7 @@ public class MedicalRecordService {
                 .orElseThrow(() -> new NotFoundException("Record no found"));
         record.setState(dto.getState());
         record.setVaccines(dto.getVaccines());
-        record.setWeigth(dto.getWeigth());
+        record.setWeight(dto.getWeigth());
         repository.save(record);
         return modelMapper.map(record, MedicalRecordDTO.class);
     }
