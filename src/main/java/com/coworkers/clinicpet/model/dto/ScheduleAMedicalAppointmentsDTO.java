@@ -2,15 +2,15 @@ package com.coworkers.clinicpet.model.dto;
 
 import com.coworkers.clinicpet.model.TypeOfAppoinments;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-public class ScheduleAMedicalAppoinmentsDTO { //Agendar cita
+public class ScheduleAMedicalAppointmentsDTO { //Agendar cita
     private Long id;
     private LocalDate date;
     private TypeOfAppoinments typeOfAppoinment;
