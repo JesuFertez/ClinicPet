@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("medical-history")
 public class MedicalHistoryController {
@@ -28,6 +30,18 @@ public class MedicalHistoryController {
     public ResponseEntity<MedicalHistoryDTO> createHistory(@RequestBody MedicalHistoryDTO medicalHistoryDTO) {
         MedicalHistoryDTO createdHistory = medicalHistoryService.createdHistory(medicalHistoryDTO);
         return new ResponseEntity<>(createdHistory, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MedicalHistoryDTO>> getAllHistories() {
+        List<MedicalHistoryDTO> histories = medicalHistoryService.getAllHistories();
+        return new ResponseEntity<>(histories, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MedicalHistoryDTO> getHistoryById(@PathVariable Long id) {
+        MedicalHistoryDTO history = medicalHistoryService.getHistoryById(id);
+        return new ResponseEntity<>(history, HttpStatus.OK);
     }
 
 }

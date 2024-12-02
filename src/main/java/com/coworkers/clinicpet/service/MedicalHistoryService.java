@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MedicalHistoryService {
@@ -24,6 +25,19 @@ public class MedicalHistoryService {
     @Autowired
     private ModelMapper modelMapper;
 
+
+    public List<MedicalHistoryDTO> getAllHistories() {
+        List<MedicalHistory> histories = medicalHistoryRepository.findAll();
+        return histories.stream().map(history -> modelMapper.map(history, MedicalHistoryDTO.class))
+                .toList();
+    }
+
+    public MedicalHistoryDTO getHistoryById(Long id){
+
+        MedicalHistory history = medicalHistoryRepository.findById(id).orElseThrow(()-> new NotFoundException("History not found"));
+        return modelMapper.map(history,MedicalHistoryDTO.class);
+    }
+
     public MedicalHistoryDTO addAppointmentToHistory(Long historyId, Long appointmentId) {
         // BUSCO HISTORIAL
         MedicalHistory history = medicalHistoryRepository.findById(historyId)
@@ -36,8 +50,6 @@ public class MedicalHistoryService {
         if (history.getScheduleAMedicalAppointments() == null) {
             history.setScheduleAMedicalAppointments(new ArrayList<>());
         }
-
-
 //agrego la cita
         history.getScheduleAMedicalAppointments().add(appointment);
 
@@ -52,6 +64,6 @@ public class MedicalHistoryService {
         MedicalHistory history = modelMapper.map(medicalHistoryDTO, MedicalHistory.class);
 
         MedicalHistory savedHistory = medicalHistoryRepository.save(history);
-        return  modelMapper.map(savedHistory,MedicalHistoryDTO.class);
+        return modelMapper.map(savedHistory, MedicalHistoryDTO.class);
     }
 }
