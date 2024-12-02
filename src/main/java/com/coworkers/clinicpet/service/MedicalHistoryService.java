@@ -47,4 +47,11 @@ public class MedicalHistoryService {
 //        retorno el historial dto ˘
         return modelMapper.map(history, MedicalHistoryDTO.class);
     }
+
+    public MedicalHistoryDTO createdHistory(MedicalHistoryDTO medicalHistoryDTO) {
+        MedicalHistory history = modelMapper.map(medicalHistoryDTO, MedicalHistory.class);
+
+        MedicalHistory savedHistory = medicalHistoryRepository.save(history);
+        return  modelMapper.map(savedHistory,MedicalHistoryDTO.class);
+    }
 }

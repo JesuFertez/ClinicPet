@@ -24,8 +24,8 @@ public class MedicalAttentionController {
 
     @GetMapping("/appointment/{appointmentId}")
     public ResponseEntity<List<MedicalAttentionDTO>> getAttentionsByAppointment(@PathVariable Long appointmentId){
-        List<MedicalAttentionDTO> atttentions = medicalAttentionService.getAttentionsByAppointment(appointmentId);
-        return  new ResponseEntity<>(atttentions, HttpStatus.OK);
+        List<MedicalAttentionDTO> attentions = medicalAttentionService.getAttentionsByAppointment(appointmentId);
+        return  new ResponseEntity<>(attentions, HttpStatus.OK);
     }
 
     @GetMapping("/appointment")
