@@ -1,13 +1,10 @@
 package com.coworkers.clinicpet.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorDTO {
@@ -15,6 +12,5 @@ public class DoctorDTO {
     private String name;
     private String lastName;
     private String specialty;
-    private List<ScheduleAMedicalAppoinmentsDTO> appoinments;
-
+    private List<ScheduleAMedicalAppointmentsDTO> appoinments;
 }
