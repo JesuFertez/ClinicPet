@@ -17,6 +17,8 @@ public class MedicalHistoryController {
     @Autowired
     private MedicalHistoryService medicalHistoryService;
 
+
+
 //    @PostMapping("/{historyId}/appointments/{appointmentId}")
 //    public ResponseEntity<MedicalHistoryDTO> addAppointmentToHistory(
 //            @PathVariable Long appointmentId,

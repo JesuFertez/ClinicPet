@@ -4,10 +4,8 @@ import com.coworkers.clinicpet.model.dto.DoctorDTO;
 import com.coworkers.clinicpet.model.entities.Doctor;
 import com.coworkers.clinicpet.repository.DoctorRepository;
 import com.coworkers.clinicpet.util.NotFoundException;
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
