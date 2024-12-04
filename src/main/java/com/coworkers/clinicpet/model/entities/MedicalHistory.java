@@ -1,12 +1,8 @@
 package com.coworkers.clinicpet.model.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.coworkers.clinicpet.model.dto.MedicalHistoryDTO;
+import com.coworkers.clinicpet.util.NotFoundException;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +21,9 @@ public class MedicalHistory {
 
     private String medicalHistoryDetails;
 
-//    @OneToMany(mappedBy = "medicalHistory")
     @OneToMany(mappedBy = "medicalHistory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ScheduleAMedicalAppointments> scheduleAMedicalAppointments;
+
+    @OneToOne(mappedBy = "medicalHistory")
+    private Pet pet;
 }

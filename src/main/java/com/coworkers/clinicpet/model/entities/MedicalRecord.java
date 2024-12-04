@@ -7,7 +7,6 @@ import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +29,7 @@ public class MedicalRecord { //Ficha medica
     private Long id;
 
     @ElementCollection //para que guarde un listado de vacunas en una tabla aparte
-    @CollectionTable(name = "pet_vaccines", joinColumns=@JoinColumn(name="pet_id",foreignKey = @ForeignKey(name = "fk_pet_vaccines_pet")))
+    @CollectionTable(name = "pet_vaccines", joinColumns=@JoinColumn(name="pet_id"))
     @Column(name = "vaccines")
     private List<String> vaccines;
 

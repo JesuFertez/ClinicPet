@@ -14,7 +14,7 @@ import java.util.List;
 public class MedicalRecordDTO { //Ficha medica
     private Long id;
     private List <String> vaccines;
-    private int weigth;
+    private int weight;
     private State state;
     private PetDTO patient;
 }

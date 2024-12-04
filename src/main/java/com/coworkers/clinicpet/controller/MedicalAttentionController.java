@@ -22,15 +22,27 @@ public class MedicalAttentionController {
         return new ResponseEntity<>(createdAttention, HttpStatus.CREATED);
     }
 
-    @GetMapping("/appointment/{id}")
-    public ResponseEntity<List<MedicalAttentionDTO>> getAttentionsByAppointment(@PathVariable Long appointmentId){
-        List<MedicalAttentionDTO> attentions = medicalAttentionService.getAttentionsByAppointment(appointmentId);
-        return  new ResponseEntity<>(attentions, HttpStatus.OK);
+    @GetMapping()
+    public ResponseEntity<List<MedicalAttentionDTO>> getAllAttentions() {
+        List<MedicalAttentionDTO> attentions = medicalAttentionService.getAllAttentions();
+        return ResponseEntity.ok(attentions);
     }
 
-    @GetMapping("/appointment")
-    public ResponseEntity<List<MedicalAttentionDTO>> getAllAttentions(){
-        List<MedicalAttentionDTO> attentions = medicalAttentionService.getAllAttentions();
+    @GetMapping("/{id}")
+    public ResponseEntity<List<MedicalAttentionDTO>> getAttentionsByAppointment(@PathVariable Long appointmentId) {
+        List<MedicalAttentionDTO> attentions = medicalAttentionService.getAttentionsByAppointment(appointmentId);
         return new ResponseEntity<>(attentions, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MedicalAttentionDTO> updateAttention(@PathVariable Long id, @RequestBody MedicalAttentionDTO attentionDTO) {
+        MedicalAttentionDTO updateAttention = medicalAttentionService.updateAttention(attentionDTO, id);
+        return ResponseEntity.ok(updateAttention);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAttention(@PathVariable Long id){
+        medicalAttentionService.deleteAttention(id);
+        return ResponseEntity.noContent().build();
     }
 }

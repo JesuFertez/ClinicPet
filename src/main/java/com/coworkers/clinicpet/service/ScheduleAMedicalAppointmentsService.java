@@ -46,7 +46,7 @@ public class ScheduleAMedicalAppointmentsService {
                 .orElseThrow(() -> new NotFoundException("Schedule Medical Not Found" + id));
 
         existingMedicalAppointment.setDate(scheduleMedicalDTO.getDate());
-        existingMedicalAppointment.setTypeOfAppointment(scheduleMedicalDTO.getTypeOfAppoinment());
+        existingMedicalAppointment.setTypeOfAppointment(scheduleMedicalDTO.getTypeOfAppointment());
         existingMedicalAppointment.setDoctor(modelMapper.map(scheduleMedicalDTO.getDoctorDTO(), Doctor.class));
         existingMedicalAppointment.setPatient(modelMapper.map(scheduleMedicalDTO.getPatient(), Pet.class));
         existingMedicalAppointment.setMedicalAttention(modelMapper.map(scheduleMedicalDTO.getMedicalAttentionDTO(), MedicalAttention.class));

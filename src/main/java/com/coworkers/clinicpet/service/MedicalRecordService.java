@@ -18,17 +18,17 @@ public class MedicalRecordService {
     @Autowired
     private ModelMapper modelMapper;
 
-
-    public List<MedicalRecordDTO> getAllRecords() {
-        List<MedicalRecord> records = medicalRecordRepository.findAll();
-        return records.stream().map(record -> modelMapper.map(record, MedicalRecordDTO.class))
-                .toList();
-    }
-
     public MedicalRecordDTO createMedicalRecord(MedicalRecordDTO dto) {
         MedicalRecord record = modelMapper.map(dto, MedicalRecord.class);
         record = medicalRecordRepository.save(record);
         return modelMapper.map(record, MedicalRecordDTO.class);
+    }
+
+    public List<MedicalRecordDTO> getAllRecords() {
+        List<MedicalRecord> records = medicalRecordRepository.findAll();
+        return records.stream().map(record -> modelMapper
+                .map(record, MedicalRecordDTO.class))
+                .toList();
     }
 
     public MedicalRecordDTO getMedicalRecordById(Long recordId) {
@@ -42,7 +42,7 @@ public class MedicalRecordService {
                 .orElseThrow(() -> new NotFoundException("Record no found"));
         record.setState(dto.getState());
         record.setVaccines(dto.getVaccines());
-        record.setWeight(dto.getWeigth());
+        record.setWeight(dto.getWeight());
         medicalRecordRepository.save(record);
         return modelMapper.map(record, MedicalRecordDTO.class);
     }
