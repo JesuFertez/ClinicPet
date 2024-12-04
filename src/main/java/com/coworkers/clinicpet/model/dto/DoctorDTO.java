@@ -12,5 +12,5 @@ public class DoctorDTO {
     private String name;
     private String lastName;
     private String specialty;
-    private List<ScheduleAMedicalAppointmentsDTO> appoinments;
+    private List<ScheduleAMedicalAppointmentsDTO> appointments;
 }

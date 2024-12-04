@@ -2,7 +2,16 @@ package com.coworkers.clinicpet.model.entities;
 
 import com.coworkers.clinicpet.model.TypeOfAppoinments;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +27,8 @@ public class ScheduleAMedicalAppointments { //Agendar cita
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @JoinColumn(name = "medical_history_id")
     @ManyToOne
-    @JoinColumn(name = "medical_history_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_schedule_medical_history"))
+    @JoinColumn(name = "medical_history_id", referencedColumnName = "id")
     private MedicalHistory medicalHistory;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -32,14 +40,14 @@ public class ScheduleAMedicalAppointments { //Agendar cita
     private TypeOfAppoinments typeOfAppointment;
 
     @ManyToOne
-    @JoinColumn(name = "pet_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_schedule_pet"))
+    @JoinColumn(name = "pet_id", referencedColumnName = "id")
     private Pet patient;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_schedule_doctor"))
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
     private Doctor doctor;
 
     @OneToOne
-    @JoinColumn(name = "medical_attention_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_schedule_medical_attention"))
+    @JoinColumn(name = "medical_attention_id", referencedColumnName = "id")
     private MedicalAttention medicalAttention;
 }

@@ -17,15 +17,6 @@ public class MedicalHistoryController {
     @Autowired
     private MedicalHistoryService medicalHistoryService;
 
-//    @PostMapping("/{historyId}/appointments/{appointmentId}")
-//    public ResponseEntity<MedicalHistoryDTO> addAppointmentToHistory(
-//            @PathVariable Long appointmentId,
-//            @PathVariable Long historyId
-//    ) {
-//        MedicalHistoryDTO updateHistory = medicalHistoryService.addAppointmentToHistory(historyId, appointmentId);
-//        return new ResponseEntity<>(updateHistory, HttpStatus.OK);
-//    }
-
     @PostMapping
     public ResponseEntity<MedicalHistoryDTO> createHistory(@RequestBody MedicalHistoryDTO medicalHistoryDTO) {
         MedicalHistoryDTO createdHistory = medicalHistoryService.createdHistory(medicalHistoryDTO);

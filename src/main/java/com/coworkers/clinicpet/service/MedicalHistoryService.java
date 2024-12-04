@@ -25,6 +25,11 @@ public class MedicalHistoryService {
     @Autowired
     private ModelMapper modelMapper;
 
+    public MedicalHistoryDTO createdHistory(MedicalHistoryDTO medicalHistoryDTO) {
+        MedicalHistory history = modelMapper.map(medicalHistoryDTO, MedicalHistory.class);
+        MedicalHistory savedHistory = medicalHistoryRepository.save(history);
+        return modelMapper.map(savedHistory, MedicalHistoryDTO.class);
+    }
 
     public List<MedicalHistoryDTO> getAllHistories() {
         List<MedicalHistory> histories = medicalHistoryRepository.findAll();
@@ -38,32 +43,24 @@ public class MedicalHistoryService {
         return modelMapper.map(history,MedicalHistoryDTO.class);
     }
 
-    public MedicalHistoryDTO addAppointmentToHistory(Long historyId, Long appointmentId) {
-        // BUSCO HISTORIAL
+
+
+
+
+    public MedicalHistoryDTO addUpdateHistory(Long historyId, Long appointmentId) {
         MedicalHistory history = medicalHistoryRepository.findById(historyId)
                 .orElseThrow(() -> new NotFoundException("History not found"));
 
-        //busco cita
+
         ScheduleAMedicalAppointments appointment = scheduleAMedicalAppoinmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new NotFoundException("Appointment not found"));
 
         if (history.getScheduleAMedicalAppointments() == null) {
             history.setScheduleAMedicalAppointments(new ArrayList<>());
         }
-//agrego la cita
         history.getScheduleAMedicalAppointments().add(appointment);
-
-        //guardo el historial
         medicalHistoryRepository.save(history);
-
-//        retorno el historial dto ˘
         return modelMapper.map(history, MedicalHistoryDTO.class);
     }
 
-    public MedicalHistoryDTO createdHistory(MedicalHistoryDTO medicalHistoryDTO) {
-        MedicalHistory history = modelMapper.map(medicalHistoryDTO, MedicalHistory.class);
-
-        MedicalHistory savedHistory = medicalHistoryRepository.save(history);
-        return modelMapper.map(savedHistory, MedicalHistoryDTO.class);
-    }
 }
