@@ -42,15 +42,15 @@ public class ScheduleAMedicalAppointmentsService {
     }
 
     public ScheduleAMedicalAppointmentsDTO updateScheduleMedical(ScheduleAMedicalAppointmentsDTO scheduleMedicalDTO, Long id) {
-        ScheduleAMedicalAppointments existingMedicalAppoinment = scheduleMedicalRepository.findById(id)
+        ScheduleAMedicalAppointments existingMedicalAppointment = scheduleMedicalRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Schedule Medical Not Found" + id));
 
-        existingMedicalAppoinment.setDate(scheduleMedicalDTO.getDate());
-        existingMedicalAppoinment.setTypeOfAppointment(scheduleMedicalDTO.getTypeOfAppoinment());
-        existingMedicalAppoinment.setDoctor(modelMapper.map(scheduleMedicalDTO.getDoctorDTO(), Doctor.class));
-        existingMedicalAppoinment.setPatient(modelMapper.map(scheduleMedicalDTO.getPatient(), Pet.class));
-        existingMedicalAppoinment.setMedicalAttention(modelMapper.map(scheduleMedicalDTO.getMedicalAttentionDTO(), MedicalAttention.class));
-        ScheduleAMedicalAppointments newScheduleMedical = scheduleMedicalRepository.save(existingMedicalAppoinment);
+        existingMedicalAppointment.setDate(scheduleMedicalDTO.getDate());
+        existingMedicalAppointment.setTypeOfAppointment(scheduleMedicalDTO.getTypeOfAppoinment());
+        existingMedicalAppointment.setDoctor(modelMapper.map(scheduleMedicalDTO.getDoctorDTO(), Doctor.class));
+        existingMedicalAppointment.setPatient(modelMapper.map(scheduleMedicalDTO.getPatient(), Pet.class));
+        existingMedicalAppointment.setMedicalAttention(modelMapper.map(scheduleMedicalDTO.getMedicalAttentionDTO(), MedicalAttention.class));
+        ScheduleAMedicalAppointments newScheduleMedical = scheduleMedicalRepository.save(existingMedicalAppointment);
         return modelMapper.map(newScheduleMedical, ScheduleAMedicalAppointmentsDTO.class);
     }
 

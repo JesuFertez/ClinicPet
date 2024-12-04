@@ -22,7 +22,7 @@ public class MedicalAttentionController {
         return new ResponseEntity<>(createdAttention, HttpStatus.CREATED);
     }
 
-    @GetMapping("/appointment/{appointmentId}")
+    @GetMapping("/appointment/{id}")
     public ResponseEntity<List<MedicalAttentionDTO>> getAttentionsByAppointment(@PathVariable Long appointmentId){
         List<MedicalAttentionDTO> attentions = medicalAttentionService.getAttentionsByAppointment(appointmentId);
         return  new ResponseEntity<>(attentions, HttpStatus.OK);
