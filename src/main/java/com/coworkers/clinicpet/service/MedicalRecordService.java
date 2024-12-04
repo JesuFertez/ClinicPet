@@ -46,4 +46,10 @@ public class MedicalRecordService {
         medicalRecordRepository.save(record);
         return modelMapper.map(record, MedicalRecordDTO.class);
     }
+
+    public void deleteRecord(Long recordId) {
+        MedicalRecord medicalRecord = medicalRecordRepository.findById(recordId)
+                .orElseThrow(()-> new NotFoundException("Medical record not found: " +recordId));
+        medicalRecordRepository.delete(medicalRecord);
+    }
 }
